@@ -14,17 +14,4 @@
 /log/*.log
 /tmp
 
-*.rbc
-*.sassc
-.sass-cache
-capybara-*.html
-.rspec
-vendor/bundle
-tmp/*
-public/system/*
-coverage/
-spec/tmp/*
-**.orig
-config/*.yml
-rerun.txt
-pickle-email-*.html
+
