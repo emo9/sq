@@ -1,4 +1,6 @@
 SocialQuotes::Application.routes.draw do
+  resources :quotes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,5 +56,26 @@ SocialQuotes::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  # match ':controller(/:action(/:id))(.:format)
+ SocialQuotes::Application.routes.draw do
+   resources :quotes
+   root :to => "quotes#index"
+ end
 end
+#== Route Map
+# Generated on 19 Jul 2012 13:50
+#
+#            POST   /quotes(.:format)          quotes#create
+#  new_quote GET    /quotes/new(.:format)      quotes#new
+# edit_quote GET    /quotes/:id/edit(.:format) quotes#edit
+#      quote GET    /quotes/:id(.:format)      quotes#show
+#            PUT    /quotes/:id(.:format)      quotes#update
+#            DELETE /quotes/:id(.:format)      quotes#destroy
+#            GET    /quotes(.:format)          quotes#index
+#            POST   /quotes(.:format)          quotes#create
+#            GET    /quotes/new(.:format)      quotes#new
+#            GET    /quotes/:id/edit(.:format) quotes#edit
+#            GET    /quotes/:id(.:format)      quotes#show
+#            PUT    /quotes/:id(.:format)      quotes#update
+#            DELETE /quotes/:id(.:format)      quotes#destroy
+#       root        /                          quotes#index

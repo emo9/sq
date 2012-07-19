@@ -1,0 +1,38 @@
+<%= form_for(@quote, :html => {:class => 'form-horizontal'})  do |f| %>
+  <% if @quote.errors.any? %>
+    <div class="alert alert-block alert-error">
+      <h3><span class="label label-important">Error</span> <%= pluralize(@quote.errors.count, "error") %> prohibitedthis quote from being saved:</h3>
+      <ul>
+        <% @quote.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :body, 'Quote', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :body, :class => "input-xxlarge", :rows => "5" %>
+        <span class="help-block">Quote body : Max 500 characters</span>
+　　　</div>
+    </div>
+    <div class="control-group">
+      <%= f.label :reference, 'Quote from', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :reference, :class => "input-xxlarge" %>
+        <span class="help-block">Reference Person,Book etc : Max 100 characters</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :remarks, 'Remark', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :remark, :class => "input-xxlarge", :rows => "5" %>
+        <span class="help-block">Remark about this Quote : max 500 characters</span>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Submit", :class => "btn btn-primary", :name => "commit" %>
+    </div>
+  </fieldset>
+<% end %>

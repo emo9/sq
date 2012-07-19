@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Quotes List</h1>
+</div>
+<div class="row-fluid">
+  <div class="span9">
+    <% if @quotes.empty? %>
+      <p>There are no quotes</p>
+    <% else %>
+      <% @quotes.each do |quote| %>
+        <p>
+        <blockquote><%= link_to quote.body, quote %></blockquote>
+        </p>
+        <div align="right">
+          <p>
+          <i><%= quote.reference %></i><br />
+          <%= link_to 'Edit', edit_quote_path(quote) %>
+          <%= link_to 'Destory', quote, confirm: 'Are you sure?', method: :delete %>
+          </p>
+        </div>
+        <div class="page-header", style="margin-top: 10px"></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="span3">
+    <%= render 'sidebar' %>
+  </div>
+</div>
