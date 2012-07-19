@@ -1,4 +1,6 @@
 SocialQuotes::Application.routes.draw do
+  devise_for :users
+
   resources :quotes
 
   # The priority is based upon order of creation:
@@ -58,24 +60,58 @@ SocialQuotes::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)
  SocialQuotes::Application.routes.draw do
+  devise_for :users
+
    resources :quotes
    root :to => "quotes#index"
  end
 end
 #== Route Map
-# Generated on 19 Jul 2012 13:50
+# Generated on 19 Jul 2012 19:59
 #
-#            POST   /quotes(.:format)          quotes#create
-#  new_quote GET    /quotes/new(.:format)      quotes#new
-# edit_quote GET    /quotes/:id/edit(.:format) quotes#edit
-#      quote GET    /quotes/:id(.:format)      quotes#show
-#            PUT    /quotes/:id(.:format)      quotes#update
-#            DELETE /quotes/:id(.:format)      quotes#destroy
-#            GET    /quotes(.:format)          quotes#index
-#            POST   /quotes(.:format)          quotes#create
-#            GET    /quotes/new(.:format)      quotes#new
-#            GET    /quotes/:id/edit(.:format) quotes#edit
-#            GET    /quotes/:id(.:format)      quotes#show
-#            PUT    /quotes/:id(.:format)      quotes#update
-#            DELETE /quotes/:id(.:format)      quotes#destroy
-#       root        /                          quotes#index
+#             user_session POST   /users/sign_in(.:format)          devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)         devise/sessions#destroy
+#            user_password POST   /users/password(.:format)         devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)     devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format)    devise/passwords#edit
+#                          PUT    /users/password(.:format)         devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)           devise/registrations#cancel
+#        user_registration POST   /users(.:format)                  devise/registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)          devise/registrations#new
+#   edit_user_registration GET    /users/edit(.:format)             devise/registrations#edit
+#                          PUT    /users(.:format)                  devise/registrations#update
+#                          DELETE /users(.:format)                  devise/registrations#destroy
+#        user_confirmation POST   /users/confirmation(.:format)     devise/confirmations#create
+#    new_user_confirmation GET    /users/confirmation/new(.:format) devise/confirmations#new
+#                          GET    /users/confirmation(.:format)     devise/confirmations#show
+#                   quotes GET    /quotes(.:format)                 quotes#index
+#                          POST   /quotes(.:format)                 quotes#create
+#                new_quote GET    /quotes/new(.:format)             quotes#new
+#               edit_quote GET    /quotes/:id/edit(.:format)        quotes#edit
+#                    quote GET    /quotes/:id(.:format)             quotes#show
+#                          PUT    /quotes/:id(.:format)             quotes#update
+#                          DELETE /quotes/:id(.:format)             quotes#destroy
+#         new_user_session GET    /users/sign_in(.:format)          devise/sessions#new
+#                          POST   /users/sign_in(.:format)          devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)         devise/sessions#destroy
+#                          POST   /users/password(.:format)         devise/passwords#create
+#                          GET    /users/password/new(.:format)     devise/passwords#new
+#                          GET    /users/password/edit(.:format)    devise/passwords#edit
+#                          PUT    /users/password(.:format)         devise/passwords#update
+#                          GET    /users/cancel(.:format)           devise/registrations#cancel
+#                          POST   /users(.:format)                  devise/registrations#create
+#                          GET    /users/sign_up(.:format)          devise/registrations#new
+#                          GET    /users/edit(.:format)             devise/registrations#edit
+#                          PUT    /users(.:format)                  devise/registrations#update
+#                          DELETE /users(.:format)                  devise/registrations#destroy
+#                          POST   /users/confirmation(.:format)     devise/confirmations#create
+#                          GET    /users/confirmation/new(.:format) devise/confirmations#new
+#                          GET    /users/confirmation(.:format)     devise/confirmations#show
+#                          GET    /quotes(.:format)                 quotes#index
+#                          POST   /quotes(.:format)                 quotes#create
+#                          GET    /quotes/new(.:format)             quotes#new
+#                          GET    /quotes/:id/edit(.:format)        quotes#edit
+#                          GET    /quotes/:id(.:format)             quotes#show
+#                          PUT    /quotes/:id(.:format)             quotes#update
+#                          DELETE /quotes/:id(.:format)             quotes#destroy
+#                     root        /                                 quotes#index
