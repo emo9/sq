@@ -67,7 +67,7 @@ SocialQuotes::Application.routes.draw do
  end
 end
 #== Route Map
-# Generated on 19 Jul 2012 19:59
+# Generated on 20 Jul 2012 12:02
 #
 #             user_session POST   /users/sign_in(.:format)          devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)         devise/sessions#destroy

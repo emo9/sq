@@ -36,5 +36,5 @@ SocialQuotes::Application.configure do
   config.assets.debug = true
 
   # Configration for Devise in Development Environment
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'ego-lab.info/sqt' }
 end
