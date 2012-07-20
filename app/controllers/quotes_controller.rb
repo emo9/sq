@@ -4,8 +4,11 @@ class QuotesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:index, :show]
   def index
-    @quotes = Quote.page(params[:page])
-
+    if params[:user_id].present? && (@user = User.find_by_id(params[:user_id]))
+      @quotes = @user.quotes.page(params[:page])
+    else
+      @quotes = Quote.page(params[:page])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @quotes }
@@ -15,11 +18,16 @@ class QuotesController < ApplicationController
   # GET /quotes/1
   # GET /quotes/1.json
   def show
-    @quote = Quote.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @quote }
+    ## @quote = Quote.find(params[:id])
+    @quote = Quote.find_by_id(params[:id])
+    if @quote.blank?
+      respond_to do |format|
+        # format.html # show.html.erb
+        # format.json { render json: @quote }
+        format.html { redirect_to @quote, notice: 'Quote was not found.' }
+      end
+    else
+      @user = @quote.user
     end
   end
 
@@ -39,7 +47,7 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
 
     if @quote.blank?
-      redirect_to root_path, alert: 'Quote was not found.'
+      format.html { redirect_to @quote, notice: 'Quote was not found.' } 
     end
   end
 

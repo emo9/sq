@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Quotes List</h1>
+  <h1><%= @user.username + "'s " if @user.present? %>Quotes List</h1>
 </div>
 <div class="row-fluid">
   <div class="span9">
@@ -16,7 +16,7 @@
           <% if user_signed_in? && quote.user_id == current_user.id -%>
             <%= link_to 'Edit', edit_quote_path(quote), class: 'btn btn-small btn-primary' %>
             <%= link_to 'Destory', quote, confirm: 'Are you sure?', method: :delete, class: 'btn btn-small btn-primary' %>
-          <% end %>
+          <% end -%>
           </p>
         </div>
         <div class="page-header", style="margin-top: 10px"></div>
