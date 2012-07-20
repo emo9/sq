@@ -34,4 +34,6 @@ class User < ActiveRecord::Base
 
   validates :username, :presence => true
   # attr_accessible :title, :body
+  
+  has_many :quotes, :dependent => :destroy
 end

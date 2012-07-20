@@ -1,6 +1,8 @@
 class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
+
+  before_filter :authenticate_user!, :except => [:index, :show]
   def index
     @quotes = Quote.page(params[:page])
 
@@ -35,13 +37,18 @@ class QuotesController < ApplicationController
   # GET /quotes/1/edit
   def edit
     @quote = Quote.find(params[:id])
+
+    if @quote.blank?
+      redirect_to root_path, alert: 'Quote was not found.'
+    end
   end
 
   # POST /quotes
   # POST /quotes.json
   def create
-    @quote = Quote.new(params[:quote])
-
+    ## @quote = Quote.new(params[:quote])
+    
+    @quote = current_user.quotes.build(params[:quote])
     respond_to do |format|
       if @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
@@ -56,15 +63,20 @@ class QuotesController < ApplicationController
   # PUT /quotes/1
   # PUT /quotes/1.json
   def update
-    @quote = Quote.find(params[:id])
+    ## @quote = Quote.find(params[:id])
 
+    @quote = current_user.quotes.find_by_id(params[:id])
     respond_to do |format|
-      if @quote.update_attributes(params[:quote])
-        format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
-        format.json { head :no_content }
+      if @quote.present?
+        if @quote.update_attributes(params[:quote])
+          format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @quote.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
+        format.html { redirect_to @quote, notice: 'Quote was not found.' }
       end
     end
   end
@@ -72,12 +84,18 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   # DELETE /quotes/1.json
   def destroy
-    @quote = Quote.find(params[:id])
-    @quote.destroy
+    ## @quote = Quote.find(params[:id])
+    @quote = current_user.quotes.find_by_id(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to quotes_url }
-      format.json { head :no_content }
+    if @quote.present?
+      @quote.destroy
+
+      respond_to do |format|
+        format.html { redirect_to quotes_url }
+        format.json { head :no_content }
+      end
+    else
+      format.html { redirect_to @quote, notice: 'Quote was not found.' }
     end
   end
 end
