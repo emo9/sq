@@ -3,8 +3,12 @@ class QuotesController < ApplicationController
   # GET /quotes.json
 
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :tag_cloud, :only => [:index, :show]
+
   def index
-    if params[:user_id].present? && (@user = User.find_by_id(params[:user_id]))
+    if params[:tag].present?
+      @quotes = Quote.tagged_with(params[:tag]).page(params[:page])
+    elsif params[:user_id].present? && (@user = User.find_by_id(params[:user_id]))
       @quotes = @user.quotes.page(params[:page])
     else
       @quotes = Quote.page(params[:page])
@@ -105,5 +109,11 @@ class QuotesController < ApplicationController
     else
       format.html { redirect_to @quote, notice: 'Quote was not found.' }
     end
+  end
+
+  private  
+
+  def tag_cloud
+    @tags = Quote.tag_counts_on(:tags)
   end
 end

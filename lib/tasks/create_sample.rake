@@ -23,8 +23,9 @@ def make_quotes
   User.all.each do |user|
     20.times do
       user.quotes.create(:body => Faker::Lorem.sentence(20),
-                   :reference => Faker::Name.name,
-                   :remark => Faker::Lorem.sentence(10))
+                         :reference => Faker::Name.name,
+                         :remark => Faker::Lorem.sentence(10),
+                         :tag_list => Faker::Lorem.words(10).join(','))
     end
   end
 end

@@ -25,6 +25,13 @@
       </div>
     </div>
     <div class="control-group">
+      <%= f.label :tag_list, 'Tags', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :tag_list, :class => "input-xxlarge" %>
+        <span class="help-block">Input Tags (Camma separated : tag1, tag2, tag3)</span>
+      </div>
+    </div>
+    <div class="control-group">
       <%= f.label :remarks, 'Remark', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :remark, :class => "input-xxlarge", :rows => "5" %>
