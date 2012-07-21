@@ -1,7 +1,7 @@
 <%= form_for(@quote, :html => {:class => 'form-horizontal'})  do |f| %>
   <% if @quote.errors.any? %>
     <div class="alert alert-block alert-error">
-      <h3><span class="label label-important">Error</span> <%= pluralize(@quote.errors.count, "error") %> prohibitedthis quote from being saved:</h3>
+      <h3><span class="label label-important">Error</span> <%= pluralize(@quote.errors.count, "エラー") %> prohibitedthis quote from being saved:</h3>
       <ul>
         <% @quote.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -11,35 +11,35 @@
   <% end %>
   <fieldset>
     <div class="control-group">
-      <%= f.label :body, 'Quote', :class => 'control-label' %>
+      <%= f.label :body, '引用', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :body, :class => "input-xxlarge", :rows => "5" %>
-        <span class="help-block">Quote body : Max 500 characters</span>
+        <span class="help-block">引用の本文 : 半角500文字（全角250文字）以内</span>
 　　　</div>
     </div>
     <div class="control-group">
-      <%= f.label :reference, 'Quote from', :class => 'control-label' %>
+      <%= f.label :reference, '引用元', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :reference, :class => "input-xxlarge" %>
-        <span class="help-block">Reference Person,Book etc : Max 100 characters</span>
+        <span class="help-block">引用元の書籍名、人物名など : 半角100文字（全角50文字）以内</span>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :tag_list, 'Tags', :class => 'control-label' %>
+      <%= f.label :tag_list, 'タグ', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :tag_list, :class => "input-xxlarge" %>
-        <span class="help-block">Input Tags (Camma separated : tag1, tag2, tag3)</span>
+        <span class="help-block">タグ (カンマで区切ってください : タグ1, タグ2, タグ3)</span>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :remarks, 'Remark', :class => 'control-label' %>
+      <%= f.label :remark, '備考', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :remark, :class => "input-xxlarge", :rows => "5" %>
-        <span class="help-block">Remark about this Quote : max 500 characters</span>
+        <span class="help-block">引用に対する備考 : 半角500文字（全角250文字）以内</span>
       </div>
     </div>
     <div class="form-actions">
-      <%= f.submit "Submit", :class => "btn btn-primary", :name => "commit" %>
+      <%= f.submit "送信", :class => "btn btn-primary", :name => "commit" %>
     </div>
   </fieldset>
 <% end %>

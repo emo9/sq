@@ -2,16 +2,16 @@
   <div class="container">
     <%= link_to "Social Quotes", root_path, :class => 'brand'%>
     <%= form_tag(quotes_path, :method => :get, :class => "navbar-search pull-left") do %>
-      <%= search_field_tag :keyword ,nil,:placeholder => "keyword" %>
+      <%= search_field_tag :keyword ,nil,:placeholder => "キーワード" %>
     <% end -%>
     <ul class="nav pull-right">
       <% if user_signed_in? -%>
         <li><%= link_to "MyQuotes" , quotes_path(user_id: current_user.id) %></li>
-        <li><%= link_to "Settings" , edit_user_registration_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to "個人設定" , edit_user_registration_path %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
       <% else -%>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "登録", new_user_registration_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
       <% end %>
     </ul>
   </div>

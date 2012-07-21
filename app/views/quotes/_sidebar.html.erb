@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <%= link_to 'New Quote', new_quote_path, class: 'btn btn-primary' %>
+  <%= link_to '引用を登録', new_quote_path, class: 'btn btn-primary' %>
 <% else %>
-  <%= link_to 'Sign up', new_user_registration_path %><br />
-  <%= link_to 'Sign in', new_user_session_path %>
+  <%= link_to '新規登録', new_user_registration_path %><br />
+  <%= link_to 'ログイン', new_user_session_path %>
 <% end %>
 <div class="page-header", style="margin-top: 10px"></div>
 <% if @user.present? -%>

@@ -1,12 +1,12 @@
 <div class="page-header">
-  <h2>Sign in</h2>
+  <h2>ログイン</h2>
 </div>
 <div class="row">
   <div class="span9">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
       <% if resource.errors.any? -%>
         <div class="alert alert-block alert-error">
-          <h3><%= pluralize(resource.errors.count, "error") %>prohibited:</h3>
+          <h3><%= pluralize(resource.errors.count, "エラー") %>prohibited:</h3>
           <ul>
             <% resource.errors.full_messages.each do |msg| -%>
               <li><%= msg %></li>
@@ -16,31 +16,31 @@
       <% end %>
       <fieldset>
         <div class="control-group">
-          <%= f.label :username, :class => 'control-label' %>
+          <%= f.label :username, 'ユーザ名', :class => 'control-label' %>
           <div class="controls">
             <%= f.text_field :username %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :email, :class => 'control-label' %>
+          <%= f.label :email, 'E-mail', :class => 'control-label' %>
           <div class="controls">
             <%= f.email_field :email %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password, :class => 'control-label' %>
+          <%= f.label :password, 'パスワード', :class => 'control-label' %>
           <div class="controls">
             <%= f.password_field :password %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :remember_me, :class => 'control-label' %>
+          <%= f.label :remember_me, '保存する', :class => 'control-label' %>
           <div class="controls">
             <%= f.check_box :remember_me %>
           </div>
         </div> 
         <div class="form-actions">
-          <%= f.submit "Sign in", :class => 'btn btn-primary', :name => 'commit' %>
+          <%= f.submit "ログイン", :class => 'btn btn-primary', :name => 'commit' %>
         </div>
       </fieldset>
     <% end %>

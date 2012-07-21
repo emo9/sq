@@ -1,12 +1,13 @@
 <div class="page-header">
-  <h2>Edit <%= resource_name.to_s.humanize %> Settings</h2>
+<!--  <h2>Edit <%= resource_name.to_s.humanize %> Settings</h2> -->
+      <h2>個人設定</h2>
 </div>
 <div class="row">
   <div class="span9">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal', :method => :put}) do |f| %>
       <% if resource.errors.any? -%>
         <div class="alert alert-block alert-error">
-          <h3><%= pluralize(resource.errors.count, "error") %>prohibited:</h3>
+          <h3><%= pluralize(resource.errors.count, "エラー") %>prohibited:</h3>
           <ul>
             <% resource.errors.full_messages.each do |msg| -%>
               <li><%= msg %></li>
@@ -16,44 +17,44 @@
       <% end %>
       <fieldset>
         <div class="control-group">
-          <%= f.label :username, :class => 'control-label' %>
+          <%= f.label :username, 'ユーザ名', :class => 'control-label' %>
           <div class="controls">
             <%= f.text_field :username %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :email, :class => 'control-label' %>
+          <%= f.label :email, 'E-mail', :class => 'control-label' %>
           <div class="controls">
             <%= f.email_field :email %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password, :class => 'control-label' %>
+          <%= f.label :password, 'パスワード', :class => 'control-label' %>
           <div class="controls">
             <%= f.password_field :password %>
-            <span class="help-block">leave blank if you don't want to change it</span>
+            <span class="help-block">変更したくない場合は入力しないで下さい</span>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password_confirmation, :class => 'control-label' %>
+          <%= f.label :password_confirmation, 'パスワード確認', :class => 'control-label' %>
           <div class="controls">
             <%= f.password_field :password_confirmation %>
           </div>
         </div> 
         <div class="control-group">
-          <%= f.label :current_password, :class => 'control-label' %>
+          <%= f.label :current_password, '現在のパスワード', :class => 'control-label' %>
           <div class="controls">
             <%= f.password_field :current_password %>
-            <span class="help-block">we need your current password to confirm your changes</span>
+            <span class="help-block">変更を確認するため、現在のパスワードを入力してください。</span>
           </div>
         </div> 
         <div class="form-actions">
-          <%= f.submit "Update", :class => 'btn btn-primary', :name => 'commit' %>
+          <%= f.submit "更新", :class => 'btn btn-primary', :name => 'commit' %>
         </div>
       </fieldset>
     <% end %>
   </div>
   <div class="span3">
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+    <p><%= link_to "アカウントの削除", registration_path(resource_name), :data => { :confirm => "本当に削除してよいですか？" }, :method => :delete %></p>
   </div>
 </div>

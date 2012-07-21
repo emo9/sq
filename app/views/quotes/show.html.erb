@@ -17,8 +17,8 @@
     <h5>Remark</h5>
     <p><%= @quote.remark %></p>
     <% if user_signed_in? && @quote.user_id == current_user.id -%>
-      <%= link_to 'Edit', edit_quote_path(@quote), class: 'btn btn-small btn-primary' %>
-      <%= link_to 'Destroy', @quote, confirm: 'Are you sure?', method: :delete, class: 'btn btn-small btn-primary' %>
+      <%= link_to '編集', edit_quote_path(@quote), class: 'btn btn-small btn-primary' %>
+      <%= link_to '削除', @quote, confirm: '本当に削除してよいですか？', method: :delete, class: 'btn btn-small btn-primary' %>
     <% end %>
   </div>
   <div class="span3">

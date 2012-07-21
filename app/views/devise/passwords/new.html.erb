@@ -1,12 +1,12 @@
 <div class="page-header">
-  <h2>Forot your password?</h2>
+  <h2>パスワードを忘れた？</h2>
 </div>
 <div class="row">
   <div class="span9">
     <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'form-horizontal', :method => :post}) do |f| %>
       <% if resource.errors.any? -%>
         <div class="alert alert-block alert-error">
-          <h3><%= pluralize(resource.errors.count, "error") %>prohibited:</h3>
+          <h3><%= pluralize(resource.errors.count, "エラー") %>prohibited:</h3>
           <ul>
             <% resource.errors.full_messages.each do |msg| -%>
               <li><%= msg %></li>
@@ -16,13 +16,13 @@
       <% end %>
       <fieldset>
         <div class="control-group">
-          <%= f.label :email, :class => 'control-label' %>
+          <%= f.label :email, 'E-mail', :class => 'control-label' %>
           <div class="controls">
             <%= f.email_field :email %>
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "Send me reset password instructions", :class => 'btn btn-primary', :name => 'commit' %>
+          <%= f.submit "パスワードをリセット", :class => 'btn btn-primary', :name => 'commit' %>
         </div>
       </fieldset>
     <% end %>
