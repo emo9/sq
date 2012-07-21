@@ -26,5 +26,9 @@ class Quote < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
+  scope :keyword_search, lambda { |keyword|
+    where "body like :q or reference like :q or remark like :q", :q => "%#{keyword}%"
+  }
+
   acts_as_taggable
 end

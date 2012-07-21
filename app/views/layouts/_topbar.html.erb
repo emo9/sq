@@ -1,6 +1,9 @@
 <div class="navbar-inner">
   <div class="container">
     <%= link_to "Social Quotes", root_path, :class => 'brand'%>
+    <%= form_tag(quotes_path, :method => :get, :class => "navbar-search pull-left") do %>
+      <%= search_field_tag :keyword ,nil,:placeholder => "keyword" %>
+    <% end -%>
     <ul class="nav pull-right">
       <% if user_signed_in? -%>
         <li><%= link_to "MyQuotes" , quotes_path(user_id: current_user.id) %></li>
